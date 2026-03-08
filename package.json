@@ -1,15 +1,19 @@
 {
 	"name": "ui-framework-react-wrapper-tool",
 	"version": "1.0.0",
-	"description": "",
+	"description": "CLI toolkit for working with ui-framework-react-wrapper",
+	"author": "Jan Moser <m.janmoser@gmail.com>",
 	"bin": {
 		"ui-framework-react-wrapper-tool": "./bin/cli.js"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/janmoser87/ui-framework-react-wrapper-tool"
+	},
 	"keywords": [],
-	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"commander": "^14.0.3",
