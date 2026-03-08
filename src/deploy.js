@@ -1,6 +1,6 @@
 
 import ora from 'ora';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 
 // Constants
 import { CLONE_DIR } from './consts/index.js';
@@ -8,10 +8,16 @@ import { CLONE_DIR } from './consts/index.js';
 export async function deploy(options) {
     let spinner;
     try {
-        const profileFlag = options.profile ? `--profile ${options.profile}` : '';
+        const args = ['ui-component', 'deploy', '--force'];
+        if (options.profile) {
+            args.push('--profile', options.profile);
+        }
 
         spinner = ora('Running deployment...').start();
-        execSync(`snc ui-component deploy --force ${profileFlag}`, { cwd: CLONE_DIR, stdio: 'inherit' });
+        const result = spawnSync('snc', args, { cwd: CLONE_DIR, stdio: 'inherit' });
+        if (result.status !== 0) {
+            throw new Error(`snc exited with code ${result.status}`);
+        }
         spinner.succeed('Deployment completed successfully!');
     }
     catch (error) {
