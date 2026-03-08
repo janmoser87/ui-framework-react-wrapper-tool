@@ -46,6 +46,7 @@ program
 program
     .command('deploy')
     .description('Deploy the UIF React wrapper project to ServiceNow. This command is a wrapper around snc ui-component deploy --force')
+    .option('--profile <profile>', 'snc authentication profile')
     .action(async (options) => {
         await deploy(options);
     });

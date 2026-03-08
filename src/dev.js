@@ -13,6 +13,6 @@ export async function dev(options) {
         spinner.succeed('Development server started successfully!');
     }
     catch (error) {
-        spinner.fail('Something went wrong: ' + error.message);
+        spinner.fail('❌ Something went wrong: ' + error.message);
     }
 }

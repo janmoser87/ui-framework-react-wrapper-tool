@@ -1,22 +1,18 @@
-import degit from 'degit';
 import ora from 'ora';
 import inquirer from 'inquirer';
-import { execSync } from 'child_process';
 
 // Utils
 import { 
     replaceInFile, 
     renameFile, 
-    validateTargetDir, 
     getFileAsJSON, 
     writeJSONToFile, 
     checkDependencies, 
     generateUniqueScopeSuffix,
-    clearFileContent
  } from './utils/index.js';
 
 // Constants
-import { TEMPLATE_REPO, CLONE_DIR } from './consts/index.js';
+import { CLONE_DIR, TEMPLATE_COMPONENT_TAG } from './consts/index.js';
 
 export async function init(options) {
     let spinner;
@@ -60,7 +56,6 @@ export async function init(options) {
 
         // Adjusting template
 
-        //const originalPrefix = '513106';
         const randomSuffix = generateUniqueScopeSuffix(5);
         const normalizedComponentTag = `x-${vendorPrefix}-${randomSuffix}`;
         const normalizedScopeName    = `x_${vendorPrefix}_${randomSuffix}`;
@@ -82,11 +77,11 @@ export async function init(options) {
         writeJSONToFile(`${CLONE_DIR}/now-ui.json`, nowuiJSON);
 
         // Updating source files
-        replaceInFile(`${CLONE_DIR}/src/index.js`, `x-513106-ui-framework-react-wrapper`, normalizedComponentTag);
-        replaceInFile(`${CLONE_DIR}/example/element.js`, `x-513106-ui-framework-react-wrapper`, normalizedComponentTag);
-        replaceInFile(`${CLONE_DIR}/src/x-513106-ui-framework-react-wrapper/index.js`, `x-513106-ui-framework-react-wrapper`, normalizedComponentTag);
+        replaceInFile(`${CLONE_DIR}/src/index.js`, TEMPLATE_COMPONENT_TAG, normalizedComponentTag);
+        replaceInFile(`${CLONE_DIR}/example/element.js`, TEMPLATE_COMPONENT_TAG, normalizedComponentTag);
+        replaceInFile(`${CLONE_DIR}/src/${TEMPLATE_COMPONENT_TAG}/index.js`, TEMPLATE_COMPONENT_TAG, normalizedComponentTag);
         renameFile(
-            `${CLONE_DIR}/src/x-513106-ui-framework-react-wrapper`,
+            `${CLONE_DIR}/src/${TEMPLATE_COMPONENT_TAG}`,
             `${CLONE_DIR}/src/${normalizedComponentTag}`
         );
 

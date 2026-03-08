@@ -15,6 +15,6 @@ export async function deploy(options) {
         spinner.succeed('Deployment completed successfully!');
     }
     catch (error) {
-        spinner.fail('Something went wrong: ' + error.message);
+        spinner.fail('❌ Something went wrong: ' + error.message);
     }
 }

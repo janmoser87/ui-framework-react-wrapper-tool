@@ -1,7 +1,6 @@
-import { copyFileSync, readdirSync } from 'fs';
+import { copyFileSync, readdirSync, rmSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { rmSync, statSync  } from 'fs';
 
 // Utils
 import { getFileAsJSON, writeJSONToFile, clearFileContent } from './utils/index.js';
@@ -14,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export async function clean() {
     const templatesDir = join(__dirname, './templates');
-    
+
     // Clean MyReactApp.js
     copyFileSync(join(templatesDir, 'MyReactApp.js'), `./src/components/MyReactApp.js`);
     copyFileSync(join(templatesDir, 'AGENT.md'), `./AGENT.md`);
@@ -33,13 +32,13 @@ export async function clean() {
     const componentsDir = './src/components';
     const components = readdirSync(componentsDir);
     for (const component of components) {
-    if (statSync(`${componentsDir}/${component}`).isDirectory()) {
-        rmSync(`${componentsDir}/${component}`, { recursive: true, force: true });
+        if (statSync(`${componentsDir}/${component}`).isDirectory()) {
+            rmSync(`${componentsDir}/${component}`, { recursive: true, force: true });
+        }
     }
 
     // Clear README.md
     clearFileContent(`${CLONE_DIR}/README.md`);
-}
-    
+
     console.log('Project cleaned successfully!');
 }
