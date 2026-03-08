@@ -1,0 +1,22 @@
+{
+	"name": "ui-framework-react-wrapper-tool",
+	"version": "1.0.0",
+	"description": "",
+	"bin": {
+		"ui-framework-react-wrapper-tool": "./bin/cli.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"commander": "^14.0.3",
+		"degit": "^2.8.4",
+		"inquirer": "^13.3.0",
+		"nanoid": "^5.1.6",
+		"ora": "^9.3.0"
+	},
+	"type": "module"
+}
