@@ -45,6 +45,22 @@ Every new React component file MUST start with these two lines:
 ```
 This is mandatory — without it, JSX will not compile correctly in this environment.
 
+## Calling the ServiceNow Table API
+You can call the Table API directly from React components using native `fetch()`. You **must** use `"X-UserToken": window.g_ck` in headers and `credentials: "include"` — any deviation will result in a `401` authentication error.
+
+Example:
+```javascript
+const response = await fetch("/api/now/table/incident", {
+  headers: {
+    Accept: "application/json",
+    "X-UserToken": window.g_ck,
+  },
+  credentials: "include",
+});
+```
+
+`window.g_ck` is the CSRF token injected by ServiceNow into the page at runtime. It is always
+available inside a UI Builder component. Do not use a plain `Authorization` header as a substitute.
 
 ## Adding Events
 To add a new event, append to the `actions` array in `now-ui.json`:
