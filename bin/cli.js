@@ -2,7 +2,7 @@
 import { program } from 'commander';
 
 // Actions
-import { configure } from '../src/init.js';
+import { configure } from '../src/configure.js';
 import { dev } from '../src/dev.js';
 import { clean } from '../src/clean.js';
 import { deploy } from '../src/deploy.js';

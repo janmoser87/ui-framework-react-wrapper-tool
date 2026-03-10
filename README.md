@@ -9,7 +9,7 @@ A CLI toolkit for working with [ui-framework-react-wrapper](https://github.com/j
 | Requirement | Notes |
 |---|---|
 | **Node.js** | v16 or higher recommended |
-| **ServiceNow CLI** (`snc`) | Required for `init` and `deploy` |
+| **ServiceNow CLI** (`snc`) | Required for `configure` and `deploy` |
 | **snc `ui-component` extension** | Must be installed via `snc extension add --name ui-component` |
 
 ---
@@ -82,7 +82,7 @@ This is a thin wrapper around `npm start` inside the project directory.
 Scaffolds the project by customising the template with your component's vendor prefix, label, and application scope.
 
 ```bash
-npx ui-framework-react-wrapper-tool init [options]
+npx ui-framework-react-wrapper-tool configure [options]
 ```
 
 **Options**
