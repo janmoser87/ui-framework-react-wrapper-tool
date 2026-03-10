@@ -1,6 +1,6 @@
 {
 	"name": "ui-framework-react-wrapper-tool",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "CLI toolkit for working with ui-framework-react-wrapper",
 	"author": "Jan Moser <m.janmoser@gmail.com>",
 	"bin": {
