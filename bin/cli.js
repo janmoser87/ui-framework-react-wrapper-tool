@@ -2,7 +2,7 @@
 import { program } from 'commander';
 
 // Actions
-import { init } from '../src/init.js';
+import { configure } from '../src/init.js';
 import { dev } from '../src/dev.js';
 import { clean } from '../src/clean.js';
 import { deploy } from '../src/deploy.js';
@@ -27,13 +27,13 @@ program
     });
 
 program
-    .command('init')
-    .description('Scaffold a new UIF React wrapper project')
+    .command('configure')
+    .description('Configures the project with your settings and adjusts the template accordingly')
     .option('--vendor-prefix <prefix>', 'Vendor prefix for the component')
     .option('--label <label>', 'Label of the component')
     .option('--scope <scope>', 'Scope of the component application (optional, will be auto-generated if not provided)')
     .action(async (options) => {
-        await init(options);
+        await configure(options);
     });
 
 program

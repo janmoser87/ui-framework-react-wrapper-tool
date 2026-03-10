@@ -14,7 +14,7 @@ import {
 // Constants
 import { CLONE_DIR, TEMPLATE_COMPONENT_TAG } from './consts/index.js';
 
-export async function init(options) {
+export async function configure(options) {
     let spinner;
     let { vendorPrefix, label, scope } = options;
     try {

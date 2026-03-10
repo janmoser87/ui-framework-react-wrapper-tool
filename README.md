@@ -36,13 +36,16 @@ npm install -g ui-framework-react-wrapper-tool
 # 1. Fetch the latest template into the current directory
 npx ui-framework-react-wrapper-tool fetch
 
-# 2. Scaffold and configure the project
-npx ui-framework-react-wrapper-tool init
-
-# 3. Start the local development server
+# 2. Start the local development server
 npx ui-framework-react-wrapper-tool dev
 
-# 4. Deploy to ServiceNow when ready
+# 3. Scaffold and configure the project
+npx ui-framework-react-wrapper-tool configure
+
+# 4. Clean the template repo from examples
+npx ui-framework-react-wrapper-tool clean
+
+# 5. Deploy to ServiceNow when ready
 npx ui-framework-react-wrapper-tool deploy
 ```
 
@@ -62,7 +65,19 @@ npx ui-framework-react-wrapper-tool fetch
 > If the target directory is not empty, you will be prompted to confirm before it is cleared.
 ---
 
-### `init`
+### `dev`
+
+Starts the local development server so you can iterate on your React component in the browser.
+
+```bash
+npx ui-framework-react-wrapper-tool dev
+```
+
+This is a thin wrapper around `npm start` inside the project directory.
+
+---
+
+### `configure`
 
 Scaffolds the project by customising the template with your component's vendor prefix, label, and application scope.
 
@@ -88,18 +103,6 @@ Any option that is not provided via flags will be collected interactively.
 - Renames source files and directories to match the new component tag
 - Updates `package.json` with the component name and description
 - Saves your configuration to `uif.wrapper.config.json`
-
----
-
-### `dev`
-
-Starts the local development server so you can iterate on your React component in the browser.
-
-```bash
-npx ui-framework-react-wrapper-tool dev
-```
-
-This is a thin wrapper around `npm start` inside the project directory.
 
 ---
 
